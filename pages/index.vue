@@ -1,5 +1,6 @@
 <template>
   <main class="main">
+    <h2>記事一覧だよ</h2>
     <ul>
       <li v-for="article in blog.articles" v-bind:key="article.id">
         <NuxtLink v-bind:to="article.id">

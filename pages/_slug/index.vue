@@ -37,10 +37,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.main{
-    width: 800px;
-    margin: 0 auto;
-}
 .title{
     margin-bottom: 20px;
 }
