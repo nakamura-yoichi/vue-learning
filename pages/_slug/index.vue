@@ -1,39 +1,51 @@
 <template>
     <main class="main">
-        <h1 class="title">{{blog.article.title}}</h1>
-        <p class="publishedAt">{{blog.article.publishedAt}}</p>
-        <div class="post" v-html="blog.article.body"></div>
+        <h1 class="title">{{title}}</h1>
+        <p class="publishedAt">{{publishedAt}}</p>
+        <div class="post" v-html="body"></div>
     </main>
 </template>
 
 <script>
-import { defineComponent, reactive, useContext } from '@nuxtjs/composition-api'
+//import { defineComponent, reactive, useContext } from '@nuxtjs/composition-api'
 import axios from 'axios'
 
 let url = 'https://nakamura-blog.microcms.io/api/v1/blog'
 const apikey = 'e6539310-ddfd-475e-bb06-519498d943fb'
 
-export default defineComponent({
-    setup(params) {
-        const blog = reactive({
-            article: ''
-        })
+// export default defineComponent({
+//     setup(params) {
+//         const blog = reactive({
+//             article: ''
+//         })
 
-        const {route} = useContext();
+//         const {route} = useContext();
 
-        const getData = async() => { 
-            let slug = route.value.params.slug;
-            let post_url = url + '/'+ slug
-            let result = await axios.get(post_url,{headers:{'X-API-KEY':apikey}})
-            blog.article = result.data
-        }
-        getData()
+//         const getData = async() => { 
+//             let slug = route.value.params.slug;
+//             let post_url = url + '/'+ slug
+//             let result = await axios.get(post_url,{headers:{'X-API-KEY':apikey}})
+//             blog.article = result.data
+//         }
+//         getData()
 
-        return{
-            blog
-        }
-    },
-})
+//         return{
+//             blog,
+//             getData
+//         }
+//     },
+// })
+export default {
+  async asyncData({ params }) {
+    const { data } = await axios.get(
+      url+'/'+params.slug,
+      {
+        headers: { 'X-API-KEY': apikey }
+      }
+    )
+    return data
+  }
+}
 </script>
 
 <style scoped>
