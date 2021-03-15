@@ -4,10 +4,4 @@
     </footer>
 </template>
 
-<style scoped>
-footer{
-    padding: 40px;
-    background-color: #ddd;
-
-}
-</style>
+<style src="../assets/css/footer.css" scoped></style>

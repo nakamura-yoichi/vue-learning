@@ -12,7 +12,7 @@
 </template>
 
 <script>
-//import { defineComponent, reactive } from '@nuxtjs/composition-api'
+//import { defineComponent, reactive, useAsync } from '@nuxtjs/composition-api'
 import axios from 'axios'
 
 const url = 'https://nakamura-blog.microcms.io/api/v1/blog'
