@@ -12,27 +12,10 @@
 </template>
 
 <script>
-//import { defineComponent, reactive, useAsync } from '@nuxtjs/composition-api'
 import axios from 'axios'
 
 const url = 'https://nakamura-blog.microcms.io/api/v1/blog'
 const apikey = 'e6539310-ddfd-475e-bb06-519498d943fb'
-
-// export default defineComponent({
-//   setup(){
-//     const blog = reactive({
-//       articles: ''
-//     })
-//     const getData = async() => {
-//       let result = await axios.get(url,{headers:{'X-API-KEY':apikey}})
-//       blog.articles = result.data.contents
-//     }
-//     getData()
-//     return{
-//       blog
-//     }
-//   }
-// })
 
 export default {
   async asyncData() {
