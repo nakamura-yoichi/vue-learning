@@ -1,6 +1,9 @@
 import axios from 'axios'
 
 export default {
+  //ソースファイルのディレクトリ
+  srcDir: 'develop/',
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -41,8 +44,10 @@ export default {
   modules: [
   ],
 
-  // ビルド設定 : https://go.nuxtjs.dev/config-build
+  // ビルド設定
   build: {
+    //「_nuxt」フォルダの名前を変更
+    publicPath: '/assets/',
     //CSSを外部ファイルとして出力する
     extractCSS: true,
     //以下のオプションをつけるとCSSをひとつのファイルに出力できる
@@ -58,24 +63,47 @@ export default {
         }
       }
     },
+
+    //LICENSEファイルを出力しないようにする
+    terser:{
+      extractComments: false,
+    },
+
     //出力ファイル名にハッシュ（変な数値）を付けないようにする
+    //さらにフォルダ別に格納するようにする
     filenames: {
-      app: () => '[name].js',
-      chunk: () => '[name].js',
-      css: ()=> '[name].css',
-      img: () => '[path][name].[ext]',
-      font: () => '[path][name].[ext]',
-      video: () => '[path][name].[ext]'
-    }
+      app: () => 'js/[name].js',
+      chunk: () => 'js/[name].js',
+      css: ()=> 'css/[name].css',
+      img: () => 'img/[path][name].[ext]',
+      font: () => 'font/[path][name].[ext]',
+      video: () => 'movie/[path][name].[ext]'
+    },
   },
 
-  //静的サイト生成の際に余分なメタ情報を削除する
+  //静的サイト生成の設定
+  generate: {
+    //出力先フォルダ名を変更する
+    dir: 'release',
+  },
+
+  //静的サイト生成の際に余分なタグやメタ情報を削除する
   hooks: {
     'generate:page': page => {
       const $ = require("cheerio")
       const doc = $.load(page.html);
 
-      // https://github.com/nuxt/nuxt.js/issues/8178
+      //不要なタグをアンラップする
+      var unwarpTags = [
+        '#__nuxt',
+        '#__layout'
+      ];
+      unwarpTags.forEach(function(ele){
+        var $parent = doc(ele).parent();
+        var s = doc(ele).html();
+        $parent.html(s);
+      });
+
       //スクリプト削除
       doc("link[rel=preload]").remove();
       doc("html script").remove();

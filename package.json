@@ -6,8 +6,9 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt build && nuxt generate",
-    "export": "nuxt export"
+    "generate": "nuxt build && nuxt generate && rm -rf release/assets/static",
+    "export": "nuxt export",
+    "clean":"rm -rf release/assets/static"
   },
   "dependencies": {
     "@nuxtjs/composition-api": "^0.22.0",
