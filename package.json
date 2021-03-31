@@ -6,9 +6,9 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt build && nuxt generate && rm -rf release/assets/static",
+    "generate": "nuxt build && nuxt generate && npm run clean",
     "export": "nuxt export",
-    "clean":"rm -rf release/assets/static"
+    "clean": "rimraf release/README.md release/assets/static release/assets/js"
   },
   "dependencies": {
     "@nuxtjs/composition-api": "^0.22.0",
@@ -17,5 +17,7 @@
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  }
 }
