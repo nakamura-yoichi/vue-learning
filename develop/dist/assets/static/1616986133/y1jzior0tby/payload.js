@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/y1jzior0tby", (function(a,b){return {data:[{id:"y1jzior0tby",createdAt:a,updatedAt:b,publishedAt:a,revisedAt:b,title:"記事１だよ",body:"\u003Cp\u003E記事１の本文だよ\u003C\u002Fp\u003E"}],fetch:{},mutations:void 0}}("2021-03-08T06:58:31.566Z","2021-03-08T09:05:45.668Z")));
