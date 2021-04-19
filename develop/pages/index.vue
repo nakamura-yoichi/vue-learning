@@ -6,6 +6,9 @@
         <NuxtLink v-bind:to="`news/${content.id}`">
           {{content.title}}
         </NuxtLink>
+        <!-- <a v-bind:href="`news/${content.id}`">
+          {{content.title}}
+        </a> -->
       </li>
     </ul>
   </main>

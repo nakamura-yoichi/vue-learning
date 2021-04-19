@@ -1,8 +1,11 @@
 <template>
     <header>
-        <NuxtLink to="/">
+        <!-- <NuxtLink to="/">
             <h1>ブログだよ</h1>
-        </NuxtLink>
+        </NuxtLink> -->
+        <a href="/">
+            <h1>ブログだよ</h1>
+        </a>
         <p>これはヘッダーコンポーネントだよ</p>
     </header>
 </template>
